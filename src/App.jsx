@@ -7,8 +7,8 @@ import "./App.css";
 
 function App() {
   return (
-    <>
-      <Navbar />
+    <div className="h-full w-full bg-black text-white">
+      <Navbar/>
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -16,7 +16,7 @@ function App() {
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </main>
-    </>
+    </div> 
   );
 }
 

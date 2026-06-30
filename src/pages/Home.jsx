@@ -65,25 +65,27 @@ export default function Home() {
   }
 
   return (
-    <div className="page">
+    <div className="page flex flex-col py-2">
+      <div className="flex gap-5 items-center justify-center mb-4">
       <h1>Find a recipe</h1>
 
-      <form onSubmit={handleSubmit} className="search-form">
+      <form onSubmit={handleSubmit} className="search-form flex gap-2">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search by dish name, e.g. pasta..."
+          className="w-[400px] bg-zinc-700 p-2 rounded-lg"
         />
-        <button type="submit">Search</button>
+        <button type="submit" className=" bg-orange-700 rounded-lg p-2">Search</button>
       </form>
-
+</div>
       {categories.length > 0 && (
-        <div className="category-pills">
+        <div className="category-pills bg-orange-700 p-2 flex justify-evenly text-lg text-black mb-4">
           {categories.slice(0, 10).map((cat) => (
             <button
               key={cat.idCategory}
-              className={`pill ${activeCategory === cat.strCategory ? "active" : ""}`}
+              className={`pill ${activeCategory === cat.strCategory ? "active" : ""} `}
               onClick={() => runCategoryFilter(cat.strCategory)}
             >
               {cat.strCategory}
@@ -96,7 +98,7 @@ export default function Home() {
       {error && !loading && <p className="status error">{error}</p>}
 
       {!loading && !error && (
-        <div className="meal-grid">
+        <div className="meal-grid flex flex-wrap justify-evenly gap-4">
           {meals.map((meal) => (
             <MealCard key={meal.idMeal} meal={meal} />
           ))}
